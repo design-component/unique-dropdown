@@ -6,15 +6,15 @@ import './App.css';
 function App() {
 	const iconNames = Object.keys(FaIcons);
 	const [selectedIcon, setSelectedIcon] = useState(null);
-	const Iconed = FaIcons[selectedIcon];
-	console.log(Iconed);
+	const FIcon = FaIcons[selectedIcon];
+	console.log(FIcon);
 	console.log(selectedIcon);
 	return (
 		<div>
 			<Dropdown>
 				<Dropdown.Toggle variant="success" id="dropdown-basic">
 					Select an Icon
-					{selectedIcon && <Iconed />}
+					{selectedIcon && <FIcon />}
 				</Dropdown.Toggle>
 
 				<Dropdown.Menu>
@@ -33,6 +33,7 @@ function App() {
 					</div>
 				</Dropdown.Menu>
 			</Dropdown>
+			<p>Selected Icon {selectedIcon}</p>
 		</div>
 	);
 }
