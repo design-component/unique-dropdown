@@ -1,27 +1,38 @@
+import { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
+import Dropdown from 'react-bootstrap/Dropdown';
 import './App.css';
 
 function App() {
-	// Get an array of icon names
 	const iconNames = Object.keys(FaIcons);
-
+	const [selectedIcon, setSelectedIcon] = useState(null);
+	const Iconed = FaIcons[selectedIcon];
+	console.log(Iconed);
+	console.log(selectedIcon);
 	return (
 		<div>
-			<div className="dropdown" tabIndex="1">
-				<a className="dropbtn">Dropdown 1</a>
-				<div className="dropdown-content">
+			<Dropdown>
+				<Dropdown.Toggle variant="success" id="dropdown-basic">
+					Select an Icon
+					{selectedIcon && <Iconed />}
+				</Dropdown.Toggle>
+
+				<Dropdown.Menu>
 					<div className="grids">
 						{iconNames.map((iconName, index) => {
 							const Icon = FaIcons[iconName];
 							return (
-								<p key={index}>
+								<Dropdown.Item
+									key={index}
+									onClick={() => setSelectedIcon(iconName)}
+								>
 									<Icon />
-								</p>
+								</Dropdown.Item>
 							);
 						})}
 					</div>
-				</div>
-			</div>
+				</Dropdown.Menu>
+			</Dropdown>
 		</div>
 	);
 }
